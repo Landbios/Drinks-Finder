@@ -1,9 +1,8 @@
 
-import Header from "../components/Header"
 const FavoritesPage = () => {
   return (
     <>
-    <Header/>
+    Favoritos
     
     </>
   )
