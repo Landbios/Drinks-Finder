@@ -10,6 +10,7 @@ const Header = () => {
   const fetchCategorys = UseAppStore((state) => state.fetechCategories)
   const searchRecipes = UseAppStore((state) => state.SearchRecipes)
   const categories = UseAppStore((state) => state.categories)
+  const ShowError = UseAppStore((state) => state.ShowNotification)
  
 
 
@@ -28,6 +29,7 @@ const Header = () => {
 const handleSubmit = (e:FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
     if (Object.values(searchFilters).includes('')){
+      ShowError({text:'Fill all the fields',error:true})
       return
     }
 

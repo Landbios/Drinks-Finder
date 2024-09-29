@@ -8,6 +8,8 @@ export default function Modal() {
     const modal = UseAppStore((state) => state.modal)
     const CloseModal = UseAppStore((state) => state.CloseModal)
     const SelectRecipe = UseAppStore((state) => state.selectedRecipe)
+    const handleClickFavorite = UseAppStore((state) => state.handleClickFavorite)
+    const FavoriteExiste = UseAppStore((state) => state.FavoriteExiste)
 
     const RenderIngredients = () => {
       const Ingredients: JSX.Element[] = []
@@ -71,7 +73,7 @@ export default function Modal() {
                   <p className='text-lg'>{SelectRecipe.strInstructions}</p>
                   <div className='mt-5 flex justify-between gap-4'>
                     <button onClick={CloseModal} type='button' className='w-full rounded-md uppercase shadow-sm bg-gray-700 p-3 font-bold text-white hover:bg-gray-500'>Close</button>
-                    <button type='button' className='w-full rounded-md uppercase shadow-sm bg-orange-700 p-3 font-bold text-white hover:bg-orange-500'>Add to favorites</button>
+                    <button type='button' onClick={() =>{CloseModal(), handleClickFavorite(SelectRecipe)}} className='w-full rounded-md uppercase shadow-sm bg-orange-700 p-3 font-bold text-white hover:bg-orange-500'>{FavoriteExiste(SelectRecipe.idDrink) ? 'Remove from favorites' : 'Add To Favorites'}</button>
                   </div>
                 </DialogPanel>
               </TransitionChild>
